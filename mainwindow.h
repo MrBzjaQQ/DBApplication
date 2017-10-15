@@ -2,6 +2,9 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QSqlTableModel>
+
+#include <QtSql/QSqlDatabase>
 
 namespace Ui {
 class MainWindow;
@@ -14,12 +17,19 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
-
+protected:
+     QSqlDatabase db;
+     QSqlTableModel *customerModel;
+     QSqlTableModel *dealModel;
+     QSqlTableModel *productModel;
+     QSqlTableModel *dealConsistenceModel;
 private:
+
     Ui::MainWindow *ui;
 public slots:
-    void openCreateCustomerForm();
-    void openTable();
+    void openCustomersTable();
+    void connectToDatabase();
+    void disconnectDatabase();
 };
 
 #endif // MAINWINDOW_H

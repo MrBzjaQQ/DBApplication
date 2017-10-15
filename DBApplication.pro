@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui
+QT += sql
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -30,8 +31,7 @@ SOURCES += \
     product.cpp \
     dealconsistence.cpp \
     deal.cpp \
-    addcustomerform.cpp \
-    customers.cpp
+    table.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -39,10 +39,8 @@ HEADERS += \
     product.h \
     dealconsistence.h \
     deal.h \
-    addcustomerform.h \
-    customers.h
+    table.h
 
 FORMS += \
         mainwindow.ui \
-    addcustomerform.ui \
-    customers.ui
+    table.ui

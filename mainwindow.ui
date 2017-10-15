@@ -42,15 +42,7 @@
      <addaction name="actionDeal_consistence"/>
      <addaction name="actionDeal"/>
     </widget>
-    <widget class="QMenu" name="menuAdd">
-     <property name="title">
-      <string>Add</string>
-     </property>
-     <addaction name="actionNew_customer"/>
-     <addaction name="actionNew_product"/>
-     <addaction name="actionNew_deal"/>
-    </widget>
-    <addaction name="menuAdd"/>
+    <addaction name="actionConnect_to_database"/>
     <addaction name="separator"/>
     <addaction name="menuOpen"/>
    </widget>
@@ -98,6 +90,11 @@
   <action name="actionNew_deal">
    <property name="text">
     <string>New Deal</string>
+   </property>
+  </action>
+  <action name="actionConnect_to_database">
+   <property name="text">
+    <string>Connect to database</string>
    </property>
   </action>
  </widget>
