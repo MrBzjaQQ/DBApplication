@@ -2,6 +2,7 @@
 #include "ui_mainwindow.h"
 #include <QMdiSubWindow>
 #include "addcustomerform.h"
+#include "customers.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -9,8 +10,11 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->mdiArea->setViewMode(QMdiArea::TabbedView);
-    ui->mdiArea->setDocumentMode(true);
-    ui->mdiArea->setTabsClosable(true);
+    ui->mdiArea->setTabsMovable(true);
+     ui->mdiArea->setTabsClosable(true);
+
+    connect(ui->actionNew_customer, SIGNAL(triggered(bool)), this, SLOT(openCreateCustomerForm()));
+    connect(ui->actionCustomer, SIGNAL(triggered(bool)), this, SLOT(openCustomersTable()));
 }
 
 MainWindow::~MainWindow()
@@ -20,8 +24,15 @@ MainWindow::~MainWindow()
 
 void MainWindow::openCreateCustomerForm()
 {
-    QMdiSubWindow *createCustomerForm = new QMdiSubWindow(new AddCustomerForm());
-    ui->mdiArea->addSubWindow(createCustomerForm);
-    createCustomerForm->show();
-    connect(this, SIGNAL(ui->actionNew_customer), this, SLOT(openCreateCustomerForm()));
+    AddCustomerForm *form = new AddCustomerForm();
+    form->show();
+}
+
+void MainWindow::openCustomersTable()
+{
+    Customers *customers = new Customers();
+    QMdiSubWindow *subWindow = new QMdiSubWindow();
+    subWindow->setWidget(customers);
+    ui->mdiArea->addSubWindow(subWindow);
+    subWindow->show();
 }

@@ -30,7 +30,8 @@ SOURCES += \
     product.cpp \
     dealconsistence.cpp \
     deal.cpp \
-    addcustomerform.cpp
+    addcustomerform.cpp \
+    customers.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -38,8 +39,10 @@ HEADERS += \
     product.h \
     dealconsistence.h \
     deal.h \
-    addcustomerform.h
+    addcustomerform.h \
+    customers.h
 
 FORMS += \
         mainwindow.ui \
-    addcustomerform.ui
+    addcustomerform.ui \
+    customers.ui
