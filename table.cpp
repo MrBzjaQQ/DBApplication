@@ -8,7 +8,10 @@ Table::Table(QWidget *parent) :
     ui->setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
 }
-
+/*!
+ * \brief Table::setSqlModel Sets up sql model for this table. Shows all data from table in tableView.
+ * \param sqlModel Pointer for sqlModel, which needs to be set up.
+ */
 void Table::setSqlModel(QSqlTableModel *sqlModel)
 {
     this->model = sqlModel;

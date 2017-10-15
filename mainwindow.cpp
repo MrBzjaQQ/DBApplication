@@ -24,7 +24,10 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
-
+/*!
+ * \brief MainWindow::connectToDatabase Makes connection to my local database
+ *
+!*/
 void MainWindow::connectToDatabase()
 {
     db = QSqlDatabase::addDatabase("QODBC");
@@ -54,7 +57,9 @@ void MainWindow::connectToDatabase()
         qDebug() << "Cannot open database: " << db.lastError();
     }
 }
-
+/*!
+ * \brief MainWindow::disconnectDatabase Disconnect from database. Also delete all QSqlTableModel objects.
+ */
 void MainWindow::disconnectDatabase()
 {
     db.close();
@@ -71,7 +76,9 @@ void MainWindow::disconnectDatabase()
 
 }
 
-
+/*!
+ * \brief MainWindow::openCustomersTable Open customers table to edit.
+ */
 void MainWindow::openCustomersTable()
 {
     QMdiSubWindow *subWindow = new QMdiSubWindow();
