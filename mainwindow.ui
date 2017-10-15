@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>679</width>
+    <height>422</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QMdiArea" name="mdiArea">
+    <property name="geometry">
+     <rect>
+      <x>-1</x>
+      <y>-1</y>
+      <width>681</width>
+      <height>371</height>
+     </rect>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>679</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuDatabase">
+    <property name="title">
+     <string>Database</string>
+    </property>
+    <widget class="QMenu" name="menuOpen">
+     <property name="title">
+      <string>Open</string>
+     </property>
+     <addaction name="actionProduct"/>
+     <addaction name="actionCustomer"/>
+     <addaction name="actionDeal_consistence"/>
+     <addaction name="actionDeal"/>
+    </widget>
+    <widget class="QMenu" name="menuAdd">
+     <property name="title">
+      <string>Add</string>
+     </property>
+     <addaction name="actionNew_customer"/>
+     <addaction name="actionNew_product"/>
+     <addaction name="actionNew_deal"/>
+    </widget>
+    <addaction name="menuAdd"/>
+    <addaction name="separator"/>
+    <addaction name="menuOpen"/>
+   </widget>
+   <addaction name="menuDatabase"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionProduct">
+   <property name="text">
+    <string>Product</string>
+   </property>
+  </action>
+  <action name="actionCustomer">
+   <property name="text">
+    <string>Customer</string>
+   </property>
+  </action>
+  <action name="actionDeal_consistence">
+   <property name="text">
+    <string>Deal consistence</string>
+   </property>
+  </action>
+  <action name="actionDeal">
+   <property name="text">
+    <string>Deal</string>
+   </property>
+  </action>
+  <action name="actionNew_customer">
+   <property name="text">
+    <string>New Customer</string>
+   </property>
+  </action>
+  <action name="actionNew_product">
+   <property name="text">
+    <string>New Product</string>
+   </property>
+  </action>
+  <action name="actionNew_deal">
+   <property name="text">
+    <string>New Deal</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
