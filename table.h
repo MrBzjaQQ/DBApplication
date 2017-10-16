@@ -20,6 +20,10 @@ public:
 
 private:
     Ui::Table *ui;
+public slots:
+    void addNewLine();
+    void deleteLine();
+    void updateDatcabase();
 };
 
 #endif // CUSTOMERS_H

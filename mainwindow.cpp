@@ -2,7 +2,6 @@
 #include "ui_mainwindow.h"
 #include <QMdiSubWindow>
 #include "table.h"
-#include "customer.h"
 #include <QtSql/QSqlDatabase>
 #include <QtSql>
 
@@ -15,9 +14,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->mdiArea->setTabsMovable(true);
      ui->mdiArea->setTabsClosable(true);
      connectToDatabase();
-     //LAPTOP-3IMO1OQI
     connect(ui->actionCustomer, SIGNAL(triggered(bool)), this, SLOT(openCustomersTable()));
     connect(ui->actionConnect_to_database, SIGNAL(triggered(bool)), this, SLOT(connectToDatabase()));
+    connect(ui->actionDeal, SIGNAL(triggered(bool)), this, SLOT(openDealTable()));
+    connect(ui->actionDeal_consistence, SIGNAL(triggered(bool)), this, SLOT(openDealConsistenceTable()));
+    connect(ui->actionProduct, SIGNAL(triggered(bool)), this, SLOT(openProductTable()));
+    connect(ui->actionDisconnect_from_database, SIGNAL(triggered(bool)), this, SLOT(disconnectDatabase()));
 }
 
 MainWindow::~MainWindow()
@@ -74,6 +76,39 @@ void MainWindow::disconnectDatabase()
     else
         qDebug() << "Cannot close database connection: " << db.lastError();
 
+}
+
+void MainWindow::openDealTable()
+{
+    QMdiSubWindow *subWindow = new QMdiSubWindow();
+    Table *table = new Table(this);
+    table->setWindowTitle("Deal");
+    table->setSqlModel(dealModel);
+    subWindow->setWidget(table);
+    ui->mdiArea->addSubWindow(subWindow);
+    subWindow->show();
+}
+
+void MainWindow::openDealConsistenceTable()
+{
+    QMdiSubWindow *subWindow = new QMdiSubWindow();
+    Table *table = new Table(this);
+    table->setWindowTitle("Deal_consistence");
+    table->setSqlModel(dealConsistenceModel);
+    subWindow->setWidget(table);
+    ui->mdiArea->addSubWindow(subWindow);
+    subWindow->show();
+}
+
+void MainWindow::openProductTable()
+{
+    QMdiSubWindow *subWindow = new QMdiSubWindow();
+    Table *table = new Table(this);
+    table->setWindowTitle("Product");
+    table->setSqlModel(productModel);
+    subWindow->setWidget(table);
+    ui->mdiArea->addSubWindow(subWindow);
+    subWindow->show();
 }
 
 /*!

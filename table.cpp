@@ -1,5 +1,5 @@
 #include "table.h"
-#include "ui_customers.h"
+#include "ui_table.h"
 
 Table::Table(QWidget *parent) :
     QWidget(parent),
@@ -7,6 +7,9 @@ Table::Table(QWidget *parent) :
 {
     ui->setupUi(this);
     setAttribute(Qt::WA_DeleteOnClose);
+    connect(ui->addNewLineButton, SIGNAL(clicked(bool)), this, SLOT(addNewLine()));
+    connect(ui->addToDatabase, SIGNAL(clicked(bool)), this, SLOT(updateDatcabase()));
+    connect(ui->deleteLineButton, SIGNAL(clicked(bool)), this, SLOT(deleteLine()));
 }
 /*!
  * \brief Table::setSqlModel Sets up sql model for this table. Shows all data from table in tableView.
@@ -22,4 +25,32 @@ void Table::setSqlModel(QSqlTableModel *sqlModel)
 Table::~Table()
 {
     delete ui;
+}
+/*!
+ * \brief Table::addNewLine Adds new row to table
+ */
+void Table::addNewLine()
+{
+    int rowCount = ui->tableView->model()->rowCount();
+    //ui->tableView->model()->insertRow(rowCount);
+    model->insertRow(rowCount);
+    model->setData(model->index(rowCount + 1, 0), rowCount + 1 );
+
+}
+/*!
+ * \brief Table::deleteLine Deletes selected row from table
+ */
+void Table::deleteLine()
+{
+    QItemSelectionModel *selection = ui->tableView->selectionModel();
+    foreach (QModelIndex index, selection->selectedRows()) {
+        model->removeRow(index.row());
+    }
+}
+/*!
+ * \brief Table::updateDatcabase Update table data in database.
+ */
+void Table::updateDatcabase()
+{
+    model->submitAll();
 }

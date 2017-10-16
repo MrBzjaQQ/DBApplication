@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Customers</class>
- <widget class="QWidget" name="Customers">
+ <class>Table</class>
+ <widget class="QWidget" name="Table">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>415</width>
+    <width>472</width>
     <height>315</height>
    </rect>
   </property>
@@ -14,8 +14,42 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <item row="0" column="0">
+   <item row="0" column="0" rowspan="4">
     <widget class="QTableView" name="tableView"/>
+   </item>
+   <item row="0" column="1">
+    <widget class="QPushButton" name="addNewLineButton">
+     <property name="text">
+      <string>New line</string>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="1">
+    <widget class="QPushButton" name="deleteLineButton">
+     <property name="text">
+      <string>Delete line</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QPushButton" name="addToDatabase">
+     <property name="text">
+      <string>Add to database</string>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>265</height>
+      </size>
+     </property>
+    </spacer>
    </item>
   </layout>
  </widget>

@@ -27,18 +27,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
-    customer.cpp \
-    product.cpp \
-    dealconsistence.cpp \
-    deal.cpp \
     table.cpp
 
 HEADERS += \
         mainwindow.h \
-    customer.h \
-    product.h \
-    dealconsistence.h \
-    deal.h \
     table.h
 
 FORMS += \

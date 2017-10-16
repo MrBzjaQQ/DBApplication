@@ -43,6 +43,7 @@
      <addaction name="actionDeal"/>
     </widget>
     <addaction name="actionConnect_to_database"/>
+    <addaction name="actionDisconnect_from_database"/>
     <addaction name="separator"/>
     <addaction name="menuOpen"/>
    </widget>
@@ -77,24 +78,14 @@
     <string>Deal</string>
    </property>
   </action>
-  <action name="actionNew_customer">
-   <property name="text">
-    <string>New Customer</string>
-   </property>
-  </action>
-  <action name="actionNew_product">
-   <property name="text">
-    <string>New Product</string>
-   </property>
-  </action>
-  <action name="actionNew_deal">
-   <property name="text">
-    <string>New Deal</string>
-   </property>
-  </action>
   <action name="actionConnect_to_database">
    <property name="text">
     <string>Connect to database</string>
+   </property>
+  </action>
+  <action name="actionDisconnect_from_database">
+   <property name="text">
+    <string>Disconnect from database</string>
    </property>
   </action>
  </widget>

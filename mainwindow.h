@@ -30,6 +30,9 @@ public slots:
     void openCustomersTable();
     void connectToDatabase();
     void disconnectDatabase();
+    void openDealTable();
+    void openDealConsistenceTable();
+    void openProductTable();
 };
 
 #endif // MAINWINDOW_H
