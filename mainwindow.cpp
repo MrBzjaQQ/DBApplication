@@ -30,6 +30,14 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->actionConnect_to_database->setIcon(dbConnectIcon);
     const QIcon dbDisconnectIcon = QIcon::fromTheme("connect-db", QIcon(":/Icons/DBDisconnect.png"));
     ui->actionDisconnect_from_database->setIcon(dbDisconnectIcon);
+    const QIcon customerIcon = QIcon::fromTheme("connect-db", QIcon(":/Icons/CustomerIcon.png"));
+    ui->actionCustomer->setIcon(customerIcon);
+    const QIcon productIcon = QIcon::fromTheme("connect-db", QIcon(":/Icons/ProductIcon.png"));
+    ui->actionProduct->setIcon(productIcon);
+    const QIcon dealConsistenceIcon = QIcon::fromTheme("connect-db", QIcon(":/Icons/DealConsistence.png"));
+    ui->actionDeal_consistence->setIcon(dealConsistenceIcon);
+    const QIcon dealIcon = QIcon::fromTheme("connect-db", QIcon(":/Icons/DealIcon.png"));
+    ui->actionDeal->setIcon(dealIcon);
 }
 
 MainWindow::~MainWindow()

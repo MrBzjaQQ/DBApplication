@@ -5,5 +5,9 @@
         <file>Icons/DBConnect.png</file>
         <file>Icons/DBDisconnect.png</file>
         <file>Icons/DBMain.png</file>
+        <file>Icons/CustomerIcon.png</file>
+        <file>Icons/DealConsistence.png</file>
+        <file>Icons/DealIcon.png</file>
+        <file>Icons/ProductIcon.png</file>
     </qresource>
 </RCC>
