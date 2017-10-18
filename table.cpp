@@ -1,5 +1,7 @@
 #include "table.h"
 #include "ui_table.h"
+#include "mainwindow.h"
+#include <QSqlError>
 
 Table::Table(QWidget *parent) :
     QWidget(parent),
@@ -52,5 +54,7 @@ void Table::deleteLine()
  */
 void Table::updateDatcabase()
 {
-    model->submitAll();
+    QErrorMessage *em = new QErrorMessage();
+    if(!model->submitAll())
+        em->showMessage("Ошибка обновления содержимого таблицы. Вероятно, не заполнена какая-либо ячейка или обнаружено совпадение первичных ключей");
 }

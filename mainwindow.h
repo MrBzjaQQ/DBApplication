@@ -5,6 +5,7 @@
 #include <QSqlTableModel>
 
 #include <QtSql/QSqlDatabase>
+#include <QErrorMessage>
 
 namespace Ui {
 class MainWindow;
@@ -15,6 +16,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    QString lastError;
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 protected:
@@ -23,8 +25,9 @@ protected:
      QSqlTableModel *dealModel;
      QSqlTableModel *productModel;
      QSqlTableModel *dealConsistenceModel;
-private:
 
+private:
+     QErrorMessage *em;
     Ui::MainWindow *ui;
 public slots:
     void openCustomersTable();

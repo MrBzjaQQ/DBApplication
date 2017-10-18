@@ -4,6 +4,7 @@
 #include "table.h"
 #include <QtSql/QSqlDatabase>
 #include <QtSql>
+#include <QSqlError>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -92,13 +93,16 @@ void MainWindow::disconnectDatabase()
         delete dealModel;
     }
     else
-        qDebug() << "Cannot close database connection: " << db.lastError();
+    {
+        em = new QErrorMessage();
+        em->showMessage(db.lastError().databaseText());
+    }
 
 }
 
 void MainWindow::openDealTable()
 {
-    QMdiSubWindow *subWindow = new QMdiSubWindow();
+    QMdiSubWindow *subWindow = new QMdiSubWindow(this);
     Table *table = new Table(this);
     table->setWindowTitle("Deal");
     table->setSqlModel(dealModel);
@@ -109,7 +113,7 @@ void MainWindow::openDealTable()
 
 void MainWindow::openDealConsistenceTable()
 {
-    QMdiSubWindow *subWindow = new QMdiSubWindow();
+    QMdiSubWindow *subWindow = new QMdiSubWindow(this);
     Table *table = new Table(this);
     table->setWindowTitle("Deal_consistence");
     table->setSqlModel(dealConsistenceModel);
@@ -120,7 +124,7 @@ void MainWindow::openDealConsistenceTable()
 
 void MainWindow::openProductTable()
 {
-    QMdiSubWindow *subWindow = new QMdiSubWindow();
+    QMdiSubWindow *subWindow = new QMdiSubWindow(this);
     Table *table = new Table(this);
     table->setWindowTitle("Product");
     table->setSqlModel(productModel);
@@ -134,7 +138,7 @@ void MainWindow::openProductTable()
  */
 void MainWindow::openCustomersTable()
 {
-    QMdiSubWindow *subWindow = new QMdiSubWindow();
+    QMdiSubWindow *subWindow = new QMdiSubWindow(this);
     Table *table = new Table(this);
     table->setWindowTitle("Customer");
     table->setSqlModel(customerModel);

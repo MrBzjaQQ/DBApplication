@@ -18,8 +18,11 @@ public:
     ~Table();
     QSqlTableModel *model;
 
+
 private:
     Ui::Table *ui;
+signals:
+    void Error();
 public slots:
     void addNewLine();
     void deleteLine();
