@@ -20,6 +20,16 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionDeal_consistence, SIGNAL(triggered(bool)), this, SLOT(openDealConsistenceTable()));
     connect(ui->actionProduct, SIGNAL(triggered(bool)), this, SLOT(openProductTable()));
     connect(ui->actionDisconnect_from_database, SIGNAL(triggered(bool)), this, SLOT(disconnectDatabase()));
+    const QIcon dbMainIcon = QIcon::fromTheme("app-main", QIcon(":/Icons/DBMain.png"));
+    this->setWindowIcon(dbMainIcon);
+    const QIcon dbIcon = QIcon::fromTheme("open-db", QIcon(":/Icons/DB.png"));
+    ui->menuDatabase->setIcon(dbIcon);
+    const QIcon tableIcon = QIcon::fromTheme("open-table", QIcon(":/Icons/DBTable.png"));
+    ui->menuOpen->setIcon(tableIcon);
+    const QIcon dbConnectIcon = QIcon::fromTheme("connect-db", QIcon(":/Icons/DBConnect.png"));
+    ui->actionConnect_to_database->setIcon(dbConnectIcon);
+    const QIcon dbDisconnectIcon = QIcon::fromTheme("connect-db", QIcon(":/Icons/DBDisconnect.png"));
+    ui->actionDisconnect_from_database->setIcon(dbDisconnectIcon);
 }
 
 MainWindow::~MainWindow()

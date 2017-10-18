@@ -36,3 +36,6 @@ HEADERS += \
 FORMS += \
         mainwindow.ui \
     table.ui
+
+RESOURCES += \
+    icons.qrc

@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>Icons/DB.png</file>
+        <file>Icons/DBTable.png</file>
+        <file>Icons/DBConnect.png</file>
+        <file>Icons/DBDisconnect.png</file>
+        <file>Icons/DBMain.png</file>
+    </qresource>
+</RCC>
