@@ -58,7 +58,11 @@ void MainWindow::connectToDatabase()
     db.setUserName("xp47x");
     if (db.open())
     {
-        ui->actionConnect_to_database->setText("Connect to database [connected]");
+    this->setWindowTitle("Database application [connected]");
+    ui->actionConnect_to_database->setText("Connect to database [connected]");
+    ui->actionConnect_to_database->setEnabled(false);
+    ui->menuOpen->setEnabled(true);
+    ui->actionDisconnect_from_database->setEnabled(true);
     customerModel = new QSqlTableModel(this, db);
     customerModel->setTable("Customer");
     customerModel->setEditStrategy(QSqlTableModel::OnRowChange);
@@ -87,6 +91,10 @@ void MainWindow::disconnectDatabase()
     if (!db.open())
     {
         ui->actionConnect_to_database->setText("Connect to database [disconnected]");
+        ui->actionConnect_to_database->setEnabled(true);
+        ui->menuOpen->setEnabled(false);
+        ui->actionDisconnect_from_database->setEnabled(false);
+        this->setWindowTitle("Database application [disconnected]");
         delete customerModel;
         delete productModel;
         delete dealConsistenceModel;
