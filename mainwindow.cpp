@@ -13,8 +13,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     ui->mdiArea->setViewMode(QMdiArea::TabbedView);
     ui->mdiArea->setTabsMovable(true);
-     ui->mdiArea->setTabsClosable(true);
-     connectToDatabase();
+    ui->mdiArea->setTabsClosable(true);
+    connectToDatabase();
     connect(ui->actionCustomer, SIGNAL(triggered(bool)), this, SLOT(openCustomersTable()));
     connect(ui->actionConnect_to_database, SIGNAL(triggered(bool)), this, SLOT(connectToDatabase()));
     connect(ui->actionDeal, SIGNAL(triggered(bool)), this, SLOT(openDealTable()));
@@ -87,7 +87,10 @@ void MainWindow::connectToDatabase()
  */
 void MainWindow::disconnectDatabase()
 {
-    db.close();
+    db.removeDatabase(db.connectionName());
+    /*!
+      \bug Необходимо закрыть все открытые таблицы, иначе вылет приложения.
+      !*/
     if (!db.open())
     {
         ui->actionConnect_to_database->setText("Connect to database [disconnected]");
@@ -95,10 +98,6 @@ void MainWindow::disconnectDatabase()
         ui->menuOpen->setEnabled(false);
         ui->actionDisconnect_from_database->setEnabled(false);
         this->setWindowTitle("Database application [disconnected]");
-        delete customerModel;
-        delete productModel;
-        delete dealConsistenceModel;
-        delete dealModel;
     }
     else
     {
@@ -116,6 +115,7 @@ void MainWindow::openDealTable()
     table->setSqlModel(dealModel);
     subWindow->setWidget(table);
     ui->mdiArea->addSubWindow(subWindow);
+    subWindow->setAttribute(Qt::WA_DeleteOnClose, true);
     subWindow->show();
 }
 
@@ -127,6 +127,7 @@ void MainWindow::openDealConsistenceTable()
     table->setSqlModel(dealConsistenceModel);
     subWindow->setWidget(table);
     ui->mdiArea->addSubWindow(subWindow);
+    subWindow->setAttribute(Qt::WA_DeleteOnClose, true);
     subWindow->show();
 }
 
@@ -138,6 +139,7 @@ void MainWindow::openProductTable()
     table->setSqlModel(productModel);
     subWindow->setWidget(table);
     ui->mdiArea->addSubWindow(subWindow);
+    subWindow->setAttribute(Qt::WA_DeleteOnClose, true);
     subWindow->show();
 }
 
@@ -152,5 +154,6 @@ void MainWindow::openCustomersTable()
     table->setSqlModel(customerModel);
     subWindow->setWidget(table);
     ui->mdiArea->addSubWindow(subWindow);
+    subWindow->setAttribute(Qt::WA_DeleteOnClose, true);
     subWindow->show();
 }
